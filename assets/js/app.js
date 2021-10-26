@@ -102,3 +102,20 @@ if (total >= 0) {
 	state.setAttribute('class', 'bad');
 	state.innerText = ' on est dans la merde 👎';
 }
+
+// switch pages
+
+var all = document.getElementById('all');
+all.addEventListener('click', () => {
+	
+});
+
+var creditPage = document.getElementById('credit');
+all.addEventListener('click', () => {
+
+});
+
+var debitPage = document.getElementById('debit');
+all.addEventListener('click', () => {
+
+});
