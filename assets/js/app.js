@@ -58,6 +58,8 @@ for (let i = 0; i < localStorage.length; i++) {
 		var taux = (((b - a) / a) * 100).toFixed(2);
 	}
 
+	
+
 	// code html injected
 
 	var codeHtml = `    
@@ -89,6 +91,31 @@ for (let i = 0; i < localStorage.length; i++) {
 
 	var replace = document.getElementById('grid-container');
 	replace.insertAdjacentHTML('afterbegin', codeHtml);
+
+	// switch pages
+
+	var all = document.getElementById('all');
+	var creditPage = document.getElementById('credit');
+	var debitPage = document.getElementById('debit');
+	var cred = obj.operator == 'credit';
+	var deb = obj.operator == 'debit';
+
+	all.addEventListener('click', () => {
+		all.codeHtml;
+	});
+
+	creditPage.addEventListener('click', () => {
+		if (cred) {
+			creditPage.codeHtml;
+		}
+	});
+
+	debitPage.addEventListener('click', () => {
+		if (deb) {
+			debitPage.codeHtml;
+		}
+		
+	});
 }
 
 // condition good / bad color class
@@ -102,20 +129,3 @@ if (total >= 0) {
 	state.setAttribute('class', 'bad');
 	state.innerText = ' on est dans la merde 👎';
 }
-
-// switch pages
-
-var all = document.getElementById('all');
-all.addEventListener('click', () => {
-	
-});
-
-var creditPage = document.getElementById('credit');
-all.addEventListener('click', () => {
-
-});
-
-var debitPage = document.getElementById('debit');
-all.addEventListener('click', () => {
-
-});
