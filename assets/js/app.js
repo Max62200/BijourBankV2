@@ -58,65 +58,98 @@ for (let i = 0; i < localStorage.length; i++) {
 		var taux = (((b - a) / a) * 100).toFixed(2);
 	}
 
-	
-
 	// code html injected
 
 	var codeHtml = `    
-    <div class="grid-container">
-    <div class="operation ${obj.operator}">
-      <div class="grid-x grid-padding-x align-middle">
-      <div class="cell shrink">
-      <div class="picto">
-        <img src="./assets/images/${img}.png" alt="" />
-      </div>
-    </div>
-        <div class="cell auto">
-          <div>
-            <h2>${obj.titre}</h2>
-            <small>${obj.desc}</small>
-          </div>
-        </div>
-        <div class="cell small-3 text-right">
-          <div>
-            <p class="count">${obj.montant}€</p>
-            <small>${taux}%</small>
-          </div>
-        </div>
-      </div>
-    </div>
-    </div>
+		<div class="grid-container">
+			<div class="operation ${obj.operator}">
+				<div class="grid-x grid-padding-x align-middle">
+					<div class="cell shrink">
+						<div class="picto">
+							<img src="./assets/images/${img}.png" alt="" />
+						</div>
+					</div>
+					<div class="cell auto">
+						<div>
+							<h2>${obj.titre}</h2>
+							<small>${obj.desc}</small>
+						</div>
+					</div>
+					<div class="cell small-3 text-right">
+						<div>
+							<p class="count">${obj.montant}€</p>
+							<small>${taux}%</small>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
     `;
 	// replace html
 
 	var replace = document.getElementById('grid-container');
 	replace.insertAdjacentHTML('afterbegin', codeHtml);
 
-	// switch pages
+	// var all = document.getElementById('#all');
+	// var creditPage = document.getElementById('credit');
+	// var debitPage = document.getElementById('debit');
+	// var cred = obj.operator == 'credit';
+	// var deb = obj.operator == 'debit';
 
-	var all = document.getElementById('all');
-	var creditPage = document.getElementById('credit');
-	var debitPage = document.getElementById('debit');
-	var cred = obj.operator == 'credit';
-	var deb = obj.operator == 'debit';
+	// all.addEventListener('click', () => {
+	// 	all.codeHtml;
+	// });
 
-	all.addEventListener('click', () => {
-		all.codeHtml;
-	});
+	// creditPage.addEventListener('click', () => {
+	// 	if (cred) {
+	// 		creditPage.codeHtml;
+	// 	}
+	// });
 
-	creditPage.addEventListener('click', () => {
-		if (cred) {
-			creditPage.codeHtml;
-		}
-	});
+	// debitPage.addEventListener('click', () => {
+	// 	if (deb) {
+	// 		debitPage.codeHtml;
+	// 	}
 
-	debitPage.addEventListener('click', () => {
-		if (deb) {
-			debitPage.codeHtml;
-		}
-		
-	});
+	// });
 }
+
+// switch pages
+const debitFilter = document.querySelector('[href="#debit"]');
+const debitType = document.querySelectorAll('.operation.debit');
+
+const creditFilter = document.querySelector('[href="#credit"]');
+const creditType = document.querySelectorAll('.operation.credit');
+
+const noFilter = document.querySelector('[href="#"]');
+noFilter.addEventListener('click', () => {
+	const filters = [debitType, creditType];
+	filters.forEach((filter) => {
+		filter.forEach((htmlElement) => {
+			htmlElement.style.display = 'block';
+		});
+	});
+});
+
+creditFilter.addEventListener('click', () => {
+	creditType.forEach((htmlElement) => {
+		htmlElement.style.display = 'block';
+	});
+
+	debitType.forEach((htmlElement) => {
+		htmlElement.style.display = 'none';
+	});
+});
+
+debitFilter.addEventListener('click', () => {
+	debitType.forEach((htmlElement) => {
+		htmlElement.style.display = 'block';
+	});
+
+	creditType.forEach((htmlElement) => {
+		htmlElement.style.display = 'none';
+	});
+});
 
 // condition good / bad color class
 
